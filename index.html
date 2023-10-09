@@ -1,87 +1,519 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Nutrição Gabriel Amorim</title>
-<style type="text/css">
-#head {
-	height: 200px;
-	width: 960px;
-	margin-right: auto;
-	margin-left: auto;
-	background-color: #FFF;
-}
-#menu {
-	width: 960px;
-	margin-right: auto;
-	margin-left: auto;
-	height: 50px;
-	line-height: 44px;
-	background-color: #FFF;
-}
-#corpo {
-	height: 800px;
-	width: 930px;
-	margin-right: auto;
-	margin-left: auto;
-	background-color: #FFF;
-	padding-right: 15px;
-	padding-left: 15px;
-	position: relative;
-}
-#rodape {
-	width: 930px;
-	margin-right: auto;
-	margin-left: auto;
-	height: 200px;
-	padding-top: 30px;
-	padding-right: 15px;
-	padding-left: 15px;
-}
-body {
-	background-color: #999;
-}
-#bar_lat {
-	float: left;
-	height: 500px;
-	width: 170px;
-	padding-right: 15px;
-	padding-left: 15px;
-	background-image: url(imagens/structures/bar2.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-	text-align: center;
-	padding-top: 15px;
-	font-size: 20px;
-	font-weight: bolder;
-}
-#conteudo {
-	float: right;
-	width: 700px;
-	padding-right: 15px;
-	padding-left: 15px;
-	height: 500px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Autor" content="Gabriel Amorim">
+    <meta name="Sobre" content="Aplicação criada em julho de 2023 para o serviço de nutrição do Hospital Cardio Pulmonar.">
+    <title>AIO</title>
+	
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFYD3T5DQQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NFYD3T5DQQ');
+</script>
+
+    <style>
+        * {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aliceblue;
+            height: 100vh;
+        }
+
+        .refeicao {
+            font-size: large;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            border-style: solid;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-color: brown;
+            border-width: 2px;
+        }
+
+        .refeicao-radioTitle {
+            text-align: end;
+            font-size: 9px;
+            margin-right: 7px;
+            height: 23px;
+        }
+
+        .refeicao-rotulo {
+            display: inline-block;
+        }
+
+        .refeicao-rotulo li {
+            float: left;
+            margin-left: 8px;
+            list-style: none;
+            width: 21px;
+        }
+
+        .labelConfig {
+            float: left;
+            min-width: 155px;
+        }
+
+        .labelHidden {
+            display: none;
+        }
+
+        .container {
+            background-color: bisque;
+            min-width: 280px;
+            max-width: 320px;
+            width: 100%;
+            /*height: 280px;*/
+            padding: 10px;
+            border-width: 1px;
+            border-color: black;
+            border-radius: 10px;
+            border-style: groove;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+
+        .a4 {
+
+            max-width: 340px;
+            padding: 10px;
+            min-height: 876px;
+            margin: auto;
+        }
+
+
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+        input[type="button"] {
+            width: 100%;
+            height: 25px;
+            background-color: rgb(250, 199, 124);
+            border-radius: 15px;
+        }
+
+        .legenda-titulo {
+            text-align: center;
+            border-style: solid;
+            border-width: 2px;
+            border-left: none;
+            border-right: none;
+            box-sizing: border-box;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: larger;
+            font-weight: bolder;
+            color: rgb(109, 41, 41);
+        }
+
+        .legenda-item {
+            margin-right: 5px;
+            background-color: brown;
+            /* color: aliceblue; */
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 15px;
+            border-width: 1px;
+            border-style: solid;
+            width: 42px;
+            height: 15px;
+            display: inline-block;
+            
+        }
+
+        .item1 {
+            background-color: rgb(177, 107, 177);
+            /* color: white; */
+        }
+
+        .item2 {
+            background-color: rgb(223, 128, 93);
+        }
+
+        .item3 {
+            background-color: rgb(121, 183, 207);
+        }
+
+        .item4 {
+            background-color: rgb(221, 204, 109);
+        }
+
+        .item5 {
+            background-color: rgb(125, 170, 125);
+            /* color: white; */
+        }
+
+
+        .resultado {
+            position: sticky;
+            top: 0;
+            background-color: rgb(221, 230, 236);
+            padding: 1rem;
+            border-top: solid;
+            border-width: 2px;
+            text-align: center;
+            font-size: 0.3s;
+        }
+
+        .resultado h2 {
+            font-size: 22px;
+
+        }
+
+        .resultado h3 {
+            margin: 5px;
+
+        }
+
+        .resultado input[type="text"] {
+            width: 28%;
+            height: 25px;
+            font-size: 18px;
+        }
+
+        .resultado input[type="text"]:focus {
+            outline-color: rgb(130, 0, 61);
+        }
+
+        .resultado input[type="text"]:valid {
+            outline-color: chartreuse;
+            outline-style: solid;
+            outline-width: 1px;
+        }
+
+        input[type="radio"] {
+            width: 8%;
+            height: 20px;
+            margin-left: 4px;
+        }
+
+        select {
+            background-color: rgb(252, 233, 210);
+            border-style: none;
+            /* height: 14px; */
+            margin-right: 1.5rem;
+        }
+
+        footer {
+            font-size: small;
+            height: 50px;
+            padding: 20px 0;
+            text-align: center;
+            color: gray;
+            
+        }
+
+        footer span {
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;            
+        }
+    </style>
+
+    
+    <script>
+
+        //DB ITENS SERVIDOS NO HCP
+        const itemDieta = [
+            { id: 0, nome: "Café", caloria: 3 },
+            { id: 1, nome: "Leite", caloria: 55 },
+            { id: 2, nome: "Pão ou Biscoito", caloria: 130 },
+            { id: 3, nome: "Queijo", caloria: 70 },
+            { id: 4, nome: "Fruta", caloria: 80 },
+            { id: 5, nome: "Suco", caloria: 70 },
+            { id: 6, nome: "Acompanhamento", caloria: 151 },
+            { id: 7, nome: "Suco", caloria: 120 },
+            { id: 8, nome: "Vitamina", caloria: 250 },
+            { id: 9, nome: "Suplemento", caloria: 300 },
+            { id: 10, nome: "AGUA DE COCO", caloria: 43 },
+            { id: 11, nome: "Arroz/Macarrão", caloria: 120 },
+            { id: 12, nome: "Feijão", caloria: 70 },
+            { id: 13, nome: "Salada cozida	", caloria: 60 },
+            { id: 14, nome: "Purê", caloria: 80 },
+            { id: 15, nome: "Proteina", caloria: 200 },
+            { id: 16, nome: "Sobremesa", caloria: 40 },
+            { id: 17, nome: "Salada crua", caloria: 70 },
+            { id: 18, nome: "Salada de fruta", caloria: 150 },
+            { id: 19, nome: "Bolo", caloria: 150 },
+            { id: 20, nome: "Sanduiche Natural", caloria: 200 },
+            { id: 21, nome: "TORRADA", caloria: 70 },
+            { id: 22, nome: "Sopa Cremosa", caloria: 200 },
+            { id: 23, nome: "Prato quente", caloria: 320 },
+            { id: 24, nome: "Mingau", caloria: 250 },
+            { id: 25, nome: "Iogurte", caloria: 60 }
+        ];
+        let setItens = [
+            0, 1, 2, 3, 4, 19, 15, 6, //DESJEJUM
+            7, 8, 25, 4, 9, 10, //COLAÇÃO
+            22, 11, 12, 13, 14, 15, 16, 17, 5, //ALMOÇO
+            5, 8, 25, 19, 21, 9, 10, 4, //LANCHE DA TARDE
+            0, 1, 2, 3, 4, 23, 15, 6, 7, //JANTAR
+            24, 25, 9 //CEIA
+        ]
+        const nItensConfig = [8, 6, 9, 8, 9, 3]
+        let nTotal = 0
+        for (let i = 0; i < nItensConfig.length; i++) {
+            nTotal += nItensConfig[i]
+        }
+
+
+        let valorDieta = Array(nTotal).fill(0)
+
+        var valorDietaSoma = 0
+        var dietaNome = ["Branda", "Pastosa", "Pastosa Especial", "Semiliquida"]
+        var dietaKcal = [2800, 2600, 1500, 900]
+
+
+
+
+    </script>
+    
 </head>
 
 <body>
 
-<div id="head"><img src="imagens/head/head1.png" width="960" height="200" /></div>
-<div id="menu">
-  <table width="100" border="0" align="center">
-    <tr>
-      <td>HOME</td>
-      <td>MONITORIA</td>
-      <td>RECEITAS</td>
-      <td>FALE_COMIGO</td>
-    </tr>
-  </table>
-</div>
-<div id="corpo">
-  <div id="bar_lat">Menu</div>
-  <div id="conteudo">O conteúdo de  id "conteudo" é inserido aqui</div>
-</div>
-<div id="rodape">O conteúdo de  id "rodape" é inserido aqui</div>
+    <div class="a4">
+
+        <h1>Avaliação da Ingestão Oral</h1>
+
+        <div class="resultado">
+            <h2 class="metaTeste">Meta calórica</h2>
+            <input id="meta" type="text" required inputmode="numeric" maxlength="4" autofocus autocomplete="on"
+                placeholder="2000kcal">
+            <h3 id="labelResultado">Calorias Ingeridas</h3>
+            <p id="resultado">Resultado</p>
+        </div>
+
+        <div class="legenda-titulo">QUANTIDADES INGERIDAS</div>
+        <span class="legenda-item item1">0%</span><span>Nada</span><br>
+        <span class="legenda-item item2">25%</span><span>Menos da metade</span><br>
+        <span class="legenda-item item3">50%</span><span>Metade</span><br>
+        <span class="legenda-item item4">75%</span><span>Mais da metade</span><br>
+        <span class="legenda-item item5">100%</span><span>Todo</span><br>
+
+        <!--# ETIQUETA #-->
+
+        <!--# DESJEJUM ETIQUETA #-->
+        <div class="container">
+            <div class="refeicao"><span>Desjejum</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt0" name="opt0"></select>
+            <select id="opt1"></select>
+            <select id="opt2"></select>
+            <select id="opt3"></select>
+            <select id="opt4"></select>
+            <select id="opt5"></select>
+            <select id="opt6"></select>
+            <select id="opt7"></select>
+        </div>
+
+        <div class="container">
+            <div class="refeicao"><span>Colação</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt8" name="opt8"></select>
+            <select id="opt9" name="opt9"></select>
+            <select id="opt10" name="opt10"></select>
+            <select id="opt11" name="opt11"></select>
+            <select id="opt12" name="opt12"></select>
+            <select id="opt13" name="opt13"></select>
+
+
+
+        </div>
+
+        <div class="container">
+            <div class="refeicao"><span>Almoço</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt14" name="opt14"></select>
+            <select id="opt15" name="opt15"></select>
+            <select id="opt16" name="opt16"></select>
+            <select id="opt17" name="opt17"></select>
+            <select id="opt18" name="opt18"></select>
+            <select id="opt19" name="opt19"></select>
+            <select id="opt20" name="opt20"></select>
+            <select id="opt21" name="opt21"></select>
+            <select id="opt22" name="opt22"></select>
+        </div>
+
+        <div class="container">
+            <div class="refeicao"><span>Lanche da Tarde</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt23" name="opt23"></select>
+            <select id="opt24" name="opt24"></select>
+            <select id="opt25" name="opt25"></select>
+            <select id="opt26" name="opt26"></select>
+            <select id="opt27" name="opt27"></select>
+            <select id="opt28" name="opt28"></select>
+            <select id="opt29" name="opt29"></select>
+            <select id="opt30" name="opt30"></select>
+        </div>
+
+        <div class="container">
+            <div class="refeicao"><span>Jantar</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt31" name="opt31"></select>
+            <select id="opt32" name="opt32"></select>
+            <select id="opt33" name="opt33"></select>
+            <select id="opt34" name="opt34"></select>
+            <select id="opt35" name="opt35"></select>
+            <select id="opt36" name="opt36"></select>
+            <select id="opt37" name="opt37"></select>
+            <select id="opt38" name="opt38"></select>
+            <select id="opt39" name="opt39"></select>
+        </div>
+
+        <div id="ceia" class="container">
+            <div class="refeicao"><span>Ceia</span></div>
+            <div class="refeicao-radioTitle">
+                <ul class="refeicao-rotulo">
+                    <li>0%</li>
+                    <li>25%</li>
+                    <li>50%</li>
+                    <li>75%</li>
+                    <li>100%</li>
+                </ul>
+            </div>
+            <select id="opt40" name="opt40"></select>
+            <select id="opt41" name="opt41"></select>
+            <select id="opt42" name="opt42"></select>
+        </div>
+        
+    </div>
+    <footer>Desenvolvido por <span onclick="autor()" href="#">Gabriel Amorim</span>, 2023.</footer>
+
 </body>
+
+<script>
+    function autor(){
+        alert("Aplicação criada por Gabriel Amorim. Versão atualizada em 13/07/2023")
+    }
+    function somaCombobox(id) {
+        if (document.getElementById("meta").value != "" ){
+        valorDietaSoma = 0
+        let selectImput = document.getElementById(id.name); //encontra o item
+        let radioId = String(id.name)
+        valorDieta[Number(id.name.slice(3))] = itemDieta[selectImput.value].caloria * id.value
+
+        //Soma os valores a variável RESULTADO
+        for (let i = 0; i < valorDieta.length; i++) {
+            valorDietaSoma += valorDieta[i]
+        }
+        let meta = Number(document.getElementById("meta").value); //Define a meta
+
+        //Printa o resultado na tela
+        document.getElementById("resultado").innerHTML = valorDietaSoma + "kcal (" + Math.round(valorDietaSoma / meta * 100) + "% da meta)";
+
+        //Configura os estilos da saída de dados
+        let resultadoConfig = document.getElementById("resultado");
+        let labelResultadoConfig = document.getElementById("labelResultado");
+        resultadoConfig.style.color = "green";
+        resultadoConfig.style.fontSize = "20px";
+        labelResultadoConfig.style.fontSize = "16px"
+
+        if (Math.round(valorDietaSoma / meta * 100) <= 50) resultadoConfig.style.color = "red";
+        else if (Math.round(valorDietaSoma / meta * 100) <= 70) resultadoConfig.style.color = "blue";
+        else resultadoConfig.style.color = "green";
+    } else{
+        let metaConfig = document.getElementById("meta");
+        let resultadoConfig = document.getElementById("resultado");
+        let labelResultadoConfig = document.getElementById("labelResultado");
+        metaConfig.focus();
+        resultadoConfig.style.color = "red";
+        resultadoConfig.innerHTML = "Primeiro peencha a meta calórica"
+        resultadoConfig.style.fontSize = "16px";
+        labelResultadoConfig.style.fontSize = "20px"
+        }
+    }
+
+
+    //Popular as caixas de seleção + radio button
+    const imputInicio = '<input onclick="somaCombobox(this)" type="radio" name="opt'
+    for (let i = 0; i <= 42; i++) {
+        const element = document.getElementById("opt" + i) //Pega o combobox
+        for (let j = 0; j <= 25; j++) {
+            //Add as opções do combobox
+            element.innerHTML += '<option value="' + j + '" >' + itemDieta[j].nome + '</option>'
+        }
+        //Add os radioButtons
+        let complemento =
+            imputInicio + i + '" value="0" checked>' +
+            imputInicio + i + '" value="0.25">' +
+            imputInicio + i + '" value="0.5">' +
+            imputInicio + i + '" value="0.75">' +
+            imputInicio + i + '" value="1"><br>'
+        element.insertAdjacentHTML("afterend", complemento)
+    }
+
+    //Seta as os itens pré-selecionados nas caixas de seleção
+
+    for (let i = 0; i <= 42; i++) {
+        let tagSelection = document.getElementById("opt" + i).children
+        tagSelection[setItens[i]].setAttributeNode(document.createAttribute("selected"))
+
+    }
+
+</script>
+
 </html>
